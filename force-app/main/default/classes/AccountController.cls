@@ -7,6 +7,6 @@ public class AccountController {
     }
     // modified by sushant kumar 
     public static void showListofAccounts(){
-      listofAccounts = [Select id, Name,Industry from Account limit 10];     
+      listofAccounts = [Select id, Name,Industry from Account limit 5];     
     } 
 }
