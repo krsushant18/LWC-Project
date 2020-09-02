@@ -1,0 +1,5 @@
+<apex:page >
+    <apex:form >
+        // created my first visualforce page using visualstudio code
+    </apex:form>
+</apex:page>

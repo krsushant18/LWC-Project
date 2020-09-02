@@ -1,0 +1,12 @@
+<!--Exntends Base Component in Component Definition -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" controller="AccountController" access="global" >
+  
+    <aura:attribute name="data" type="Account[]"/>
+    <ltng:require scripts="{!$Resource.BaseJS}"
+                  afterScriptsLoaded="{!c.fetchAccounts}"/>
+    
+    <aura:iteration items="{!v.data}" var="acc">
+      <p><lightning:formattedText value="{!acc.Name}" /></p>
+    </aura:iteration>
+    
+</aura:component>

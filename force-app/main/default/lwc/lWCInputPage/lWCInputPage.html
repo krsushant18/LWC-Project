@@ -1,0 +1,44 @@
+<template>
+<div class="slds-form">
+    <div class="slds-form-element slds-form-element_horizontal">         
+        <lightning-input label="First Name" value={firstName} onchange={firstNameOnChange}></lightning-input>
+    </div>
+    <div class="slds-form-element slds-form-element_horizontal">         
+        <lightning-input label="Last Name" value={lasttName} onchange={lastNameOnChange}></lightning-input>
+        </div>
+        <div class="slds-form-element slds-form-element_horizontal">         
+        <lightning-input label="Email Id" type="email" value={email} onchange={emailNameOnChange}></lightning-input>
+        </div>
+        <div class="slds-form-element slds-form-element_horizontal">         
+        <lightning-input label="Mobile Number" type="Number" value={mobileNumber} onchange={mobileNumberOnChange}></lightning-input>
+        </div>
+        <div class="slds-form-element slds-form-element_horizontal">
+        <lightning-radio-group name="radioGroup"
+        label="Gender"
+        options={options}
+        value={value}
+        onchange={handleGenderOnChange}            
+        type="radio"></lightning-radio-group>
+    </div>
+    <div class="slds-form-element slds-form-element_horizontal">
+        <lightning-combobox
+            name="department"
+            label="Department Name"
+            value={value}
+            placeholder="Select Department"
+            options={deptOptions}
+            onchange={handleDepartmentOnChange} >
+        </lightning-combobox>
+    </div>
+    <div class="slds-form-element slds-form-element_horizontal">
+        <lightning-button label="Create Contact" onclick={createContact}>
+        </lightning-button>
+    </div>
+</div>
+<lightning-datatable
+data={data}
+columns={columns}
+key-field="id"           
+onrowselection={getSelectedName}> <!-- hide-checkbox-column-->
+</lightning-datatable>
+</template>

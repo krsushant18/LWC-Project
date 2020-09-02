@@ -1,0 +1,35 @@
+<template>
+    <!--<template if:true={showContact}>-->
+    <lightning-card title="All Contacts">
+      <ul>
+        <template for:each={conList} for:item="contact">
+          <li key={contact.Id}>
+            <div class="slds-p-around_medium lgc-bg">
+              <lightning-tile label={contact.LastName} type="media">
+                <lightning-icon
+                  slot="media"
+                  icon-name="standard:contact"
+                ></lightning-icon>
+                <p class="slds-truncate" title={contact.Email}>
+                  {contact.Email}
+                </p>
+              </lightning-tile>
+            </div>
+          </li>
+        </template>
+      </ul>
+      <!--<lightning-button
+          label="Get contacts"
+          onclick={getContactList}
+          variant="brand"
+        ></lightning-button>-->
+    </lightning-card>
+    <!--</template>-->
+    <!--<lightning-input
+      type="checkbox"
+      label="Show Contacts"
+      checked={showContact}
+      onchange={handleChange}
+    >
+    </lightning-input>-->
+  </template>
