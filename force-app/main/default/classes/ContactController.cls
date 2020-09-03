@@ -2,11 +2,10 @@ public with sharing class ContactController {
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactList() {
         return [
-            SELECT Id, Name, Title, Phone, Email
-            FROM Contact          
-            LIMIT 10
-        ];
+            SELECT Id, FirstName, Lastname, AccountId, Email
+            FROM Contact WHERE CREATEDDATE = TODAY];        
     } 
+
     @AuraEnabled(cacheable=true)
     public static List<Contact> findContacts(String searchKey) {
         String key = '%' + searchKey + '%';
