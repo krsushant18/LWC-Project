@@ -1,12 +1,8 @@
 public class AccountController {
     
-    public static List<Account> listofAccounts{get;set;}
-    
-    public AccountController(){
-      listofAccounts = new List<Account>();
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccountList() {
+        return [SELECT Id, Name, Type, Rating,
+                AccountSource, Industry FROM Account where createddate = TODAY];
     }
-    // modified by sushant kumar 
-    public static void showListofAccounts(){
-      listofAccounts = [Select id, Name,Industry from Account limit 10];     
-    } 
 }

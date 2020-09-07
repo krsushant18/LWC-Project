@@ -2,7 +2,7 @@ public with sharing class ContactController {
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactList() {
         return [
-            SELECT Id, FirstName, Lastname, AccountId, Email
+            SELECT Id, FirstName, LastName, Email, MobilePhone,Department
             FROM Contact WHERE CREATEDDATE = TODAY];        
     } 
 

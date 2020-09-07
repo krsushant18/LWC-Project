@@ -1,51 +1,18 @@
 <template>
-    <lightning-card title="Employee Form">
-        <template if:true={RecordData}>
-            <div class="slds-m-around--xx-large">
-                <div class="container-fluid">
-                    <div class="form-group">
-                        <lightning-input label="First Name" name="firstName" required="required" type="text" value={RecordData.FirstName} onchange={firstNameOnChange}></lightning-input>
-                    </div>
-                    <div class="form-group">
-                        <lightning-input label="Last Number" name="lastName" type="text" value={RecordData.LastName} onchange={lastNameOnChange}></lightning-input>
-                    </div>
-                    <div class="form-group">
-                        <lightning-input label="Email" name="Email" required="required" type="text" value={RecordData.Email} onchange={emailNameOnChange}></lightning-input>
-                    </div>
-                    <div class="form-group">
-                        <lightning-input label="Mobile" name="Phone" type="text" value={RecordData.Phone} onchange={mobileNumberOnChange}></lightning-input>
-                    </div>
-                    <div class="form-group">
-                        <lightning-radio-group name="radioGroup"
-                        label="Gender"
-                        options={options}
-                        value={RecordData.Gender}
-                        onchange={handleGenderOnChange}            
-                        type="radio"></lightning-radio-group>
-                    </div>
-                    <div class="form-group">
-                        <lightning-combobox
-                        name="department"
-                        label="Department Name"
-                        value={RecordData.Department}
-                        placeholder="Select Department"
-                        options={deptOptions}
-                        onchange={handleDepartmentOnChange} >
-                    </lightning-combobox>
-                    </div>
-                </div>
-                <br/>
-                <lightning-button label="Submit" onclick={handleSave} variant="brand"></lightning-button>
-            </div>
-        </template>
+    <lightning-card title="Contact Information">
+        <div class="slds-p-around_small">
+                <lightning-record-form
+                object-api-name={objectApiName}
+                columns="2"
+                mode="edit"
+                fields={selectedFields}
+                onsuccess={handleSuccess} >
+            </lightning-record-form>
+        </div>
     </lightning-card>
-
-    <div>
-        <h2> List of Employees</h2>
-        <lightning-datatable
-                key-field="id"
-                data={data}
-                columns={columns}>
-        </lightning-datatable>  
-    </div>    
+    <h2> List of Contacts</h2>
+    <template if:true={conList}>
+        <lightning-datatable data={conList} columns={columns} key-field="Id">
+        </lightning-datatable>
+    </template>
 </template>
