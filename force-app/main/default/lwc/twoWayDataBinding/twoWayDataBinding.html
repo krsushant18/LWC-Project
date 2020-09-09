@@ -1,0 +1,109 @@
+<template>
+    <lightning-card title="Two-way Data Binding Demo">
+     <!--First input box-->
+    <div class="slds-p-around_medium">
+        <lightning-input
+          type="text"
+          name="fullname"
+          label="Enter your name:"
+          onkeyup={changeHandler}
+          value={fullname}
+        ></lightning-input>
+      </div>
+      <!--Second input box-->
+      <div class="slds-p-around_medium">
+        <lightning-input
+          type="text"
+          name="title"
+          label="Enter your title:"
+          onkeyup={changeHandler}
+          value={title}
+        ></lightning-input>
+      </div>
+      <!--Result of binding-->
+      <div class="slds-p-around_medium">
+        <h5>My name is {fullname} and my title is {title}</h5>
+      </div>
+      <template if:true={showText}>
+        <h3>Hurray!! You able to see the hidden text</h3>
+      </template>
+    </lightning-card>   
+    
+    <lightning-card title="toggle demo">
+        <ul class="slds-m-around_medium">
+          <button class="slds-button slds-button_brand" onclick={toggleHandler}>
+            Click me to toggle the text
+          </button>
+          <template if:false={toggleText}>
+            <h3>let's play hide and seek!!</h3>
+          </template>
+        </ul>
+      </lightning-card>
+      
+    
+        <lightning-card title="Condition based Hide/show">     
+          <ul class="slds-m-around_medium">
+            <lightning-input
+              type="text"
+              name="title"
+              label="Enter your Name:"
+              onkeyup={changeHandler1}
+              value={inputText}>
+            </lightning-input>
+            
+            <template if:true={checkText}>
+              <h3>Hello salesforce</h3>
+            </template>
+          </ul>
+        </lightning-card>
+
+        <!-- Card for for:each demo with an array -->
+        <lightning-card title="for:each example" icon-name="custom:custom14">
+            <ul class="slds-m-around_medium">
+            <template for:each={carList} for:item=car>
+              <a href="#" class="list-group-item list-group-item-action" key={car}
+                >{car}
+              </a>
+            </template>
+            </ul>
+        </lightning-card>
+        <lightning-card title="for:each demo with array of objects">              
+        <ul class="slds-m-around_medium">
+          <template for:each={programmingList} for:item=program>             
+            <a href="#"
+              class="list-group-item list-group-item-action"
+              key={program.id}>{program.language}               
+             </a>              
+          </template>
+        </ul>
+      </lightning-card>
+
+      <!-- Card for Iterator demo with an array -->
+      <lightning-card title="Iterator loop demo">
+        <ul class="slds-m-around_medium">
+          <div class="list-group-inline">
+            <template iterator:ceo={ceoList}>
+              <div key={ceo.value.id}>
+                <a
+                  href="#"
+                  if:true={ceo.first}
+                  class="list-group-item list-group-item-action header"
+                >
+                  <strong>List of top companies and there CEO's : </strong>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <strong>{ceo.value.company} : </strong>{ceo.value.name}
+                </a>
+                <a
+                  href="#"
+                  if:true={ceo.last}
+                  class="list-group-item list-group-item-action footer"
+                >
+                  <strong>&copy; 2019 Lightning school salesforce </strong>
+                </a>
+              </div>
+            </template>
+          </div>
+        </ul>
+      </lightning-card>
+</template>

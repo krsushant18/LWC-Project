@@ -1,0 +1,23 @@
+<template>
+    <b>Parent Child Component</b>
+    <lightning-card title="Account Lists" icon-name="custom:custom9">
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item>
+                <template if:true={accountList.data}>
+                    <c-lwc-child account-list={accountList.data} onaccountselection={onAccountSelection}></c-lwc-child>
+                </template>
+        </lightning-layout-item>
+    <lightning-layout-item class="slds-m-left_medium">
+    </lightning-layout-item>
+    <lightning-layout-item class="slds-m-left_small">
+        <lightning-record-view-form record-id={selectedAccountId} object-api-name="Account">
+            <div class="slds-box slds-them_shade">
+               <b> <lightning-output-field field-name="Name"></lightning-output-field></b>
+                <b><lightning-output-field field-name="Phone"></lightning-output-field></b>
+            </div>
+        </lightning-record-view-form>
+    </lightning-layout-item>
+</lightning-layout>
+</lightning-card>
+      
+</template>

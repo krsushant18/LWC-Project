@@ -1,0 +1,19 @@
+<template>
+    <table class="slds-table slds-table_bordered">
+        <tbody>
+            <template if:true={accountList}>
+                <template for:each={accountList} for:item="acc">
+                <tr key={acc.Id}>
+                    <td>
+                    <lightning-layout vertical-align="center" key={acc.Id} data-key={acc.Id}>
+                        <lightning-layout-item padding="around-small" key={acc.Id} data-key={acc.Id} onclick={handleAccountClick}>
+                            <p>{acc.Name}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    </td>
+                </tr>
+                </template>
+            </template>
+        </tbody>
+    </table>
+</template>
