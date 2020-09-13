@@ -1,0 +1,16 @@
+<template>    
+    <div>
+        Name : {fname}
+        <br/>
+        <lightning-input type="text" value={fname} onchange={onNameChange}> </lightning-input>
+    </div>
+    <template if:true={accounts.data}>
+        <template for:each={accounts.data} for:item = "account">
+          <p key={account.id}>{account.Name}</p>
+        </template>
+    </template>
+    <div>
+        <lightning-button variant="brand" label="click Me" onclick={onButtonClick}></lightning-button>
+    </div>    
+    <c-child-lwc></c-child-lwc>
+</template>  
